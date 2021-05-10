@@ -1,0 +1,15 @@
+[package]
+name = "base64-rs"
+version = "0.1.0"
+authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
+description = "Implementation of the Base64 hash made using Rust"
+edition = "2018"
+license = "GPL-3.0"
+readme = "README.md"
+homepage = "https://github.com/deadblackclover/base64-rs"
+repository = "https://github.com/deadblackclover/base64-rs"
+keywords = ["base64"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
