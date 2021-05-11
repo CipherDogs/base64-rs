@@ -1,10 +1,10 @@
 use std::char;
 
-const BASE64KEYS: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+const BASE64ALPHABET: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 pub fn encode(string: &str) -> String {
     let chars: Vec<char> = string.chars().collect();
-    let keys: Vec<char> = BASE64KEYS.chars().collect();
+    let alphabet: Vec<char> = BASE64ALPHABET.chars().collect();
     let mut result = String::new();
 
     let mut i = 0;
@@ -19,23 +19,23 @@ pub fn encode(string: &str) -> String {
         let chr3 = if i >= chars.len() { 0 } else { chars[i] as u32 };
         i += 1;
 
-        let enc1 = chr1 >> 2;
-        let enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+        let res1 = chr1 >> 2;
+        let res2 = ((chr1 & 3) << 4) | (chr2 >> 4);
 
-        let mut enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-        let mut enc4 = chr3 & 63;
+        let mut res3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+        let mut res4 = chr3 & 63;
 
         if chr2 == 0 {
-            enc3 = 64;
-            enc4 = 64;
+            res3 = 64;
+            res4 = 64;
         } else if chr3 == 0 {
-            enc4 = 64;
+            res4 = 64;
         }
 
-        result.push(keys[enc1 as usize]);
-        result.push(keys[enc2 as usize]);
-        result.push(keys[enc3 as usize]);
-        result.push(keys[enc4 as usize]);
+        result.push(alphabet[res1 as usize]);
+        result.push(alphabet[res2 as usize]);
+        result.push(alphabet[res3 as usize]);
+        result.push(alphabet[res4 as usize]);
     }
 
     result
