@@ -1,4 +1,4 @@
-# base64-rs
+# base64-string
 
 ![crates.io](https://img.shields.io/crates/v/base64-string.svg)
 ![docs.rs](https://docs.rs/base64-string/badge.svg)
