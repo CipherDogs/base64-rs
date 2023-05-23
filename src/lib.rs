@@ -1,4 +1,4 @@
-//! base64-rs
+//! base64-string
 //!
 //! Implementation of the Base64 hash made using Rust
 use std::char;
@@ -6,7 +6,16 @@ use std::collections::HashMap;
 
 const BASE64ALPHABET: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
-/// Encode string
+/// Base64 encode string
+///
+/// # Example
+///
+/// ```rust
+/// let string = "Hi!";
+/// let result = base64_string::encode(string);
+/// assert_eq!(result, String::from("SGkh"));
+/// ```
+///
 pub fn encode(string: &str) -> String {
     let chars: Vec<char> = string.chars().collect();
     let alphabet: Vec<char> = BASE64ALPHABET.chars().collect();
@@ -46,7 +55,16 @@ pub fn encode(string: &str) -> String {
     result
 }
 
-/// Decode string
+/// Base64 decode string
+///
+/// # Example
+///
+/// ```rust
+/// let string = "SGkh";
+/// let result = base64_string::decode(string);
+/// assert_eq!(result, String::from("Hi!"));
+/// ```
+///
 pub fn decode(string: &str) -> String {
     let chars: Vec<char> = string.chars().collect();
     let alphabet: Vec<char> = BASE64ALPHABET.chars().collect();
